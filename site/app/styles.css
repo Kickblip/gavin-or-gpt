@@ -8,6 +8,8 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: #5b3e77;
+  color: white;
 }
 
 .container {
@@ -17,7 +19,7 @@ html {
 }
 
 .logo {
-  max-width: 100%;
+  max-width: 45%;
   height: auto;
 }
 
