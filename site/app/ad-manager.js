@@ -31,10 +31,10 @@ function createAd() {
 
     document.body.appendChild(adElement);
 
-    // Remove ad after some time to avoid clutter
-    setTimeout(() => {
+    // Remove ad when clicked
+    adElement.onclick = function () {
       document.body.removeChild(adElement);
-    }, 5000); // 5 seconds until ad removal
+    };
   };
 }
 

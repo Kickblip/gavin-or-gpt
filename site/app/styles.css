@@ -58,6 +58,10 @@ html {
   cursor: pointer;
 }
 
+.fake-ad {
+  cursor: pointer;
+}
+
 .content-div:hover {
   background-color: #d3d3d3;
   transform: scale(1.05);
