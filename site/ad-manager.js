@@ -1,4 +1,8 @@
-const fakeAds = ["./assets/cult_ad.gif"];
+const fakeAds = [
+  "./assets/cult_ad.gif",
+  "./assets/lake_mungo_ad.gif",
+  "./assets/sad_loser.gif",
+];
 
 function createAd() {
   const adIndex = Math.floor(Math.random() * fakeAds.length);
