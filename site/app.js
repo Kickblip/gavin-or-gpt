@@ -1,4 +1,4 @@
-import snippets from "../assets/snippet-list.js";
+import snippets from "./assets/snippet-list.js";
 
 const resetButtons = () => {
   const randomSnippet = snippets[Math.floor(Math.random() * snippets.length)];

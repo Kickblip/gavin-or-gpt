@@ -1,4 +1,4 @@
-const fakeAds = ["../assets/cult_ad.gif"];
+const fakeAds = ["./assets/cult_ad.gif"];
 
 function createAd() {
   const adIndex = Math.floor(Math.random() * fakeAds.length);
@@ -31,7 +31,12 @@ function createAd() {
 
     document.body.appendChild(adElement);
 
-    // Remove ad when clicked
+    // Remove ad after a long time to avoid cluttering the page
+    setTimeout(() => {
+      document.body.removeChild(adElement);
+    }, 30000);
+
+    // Remove ad when clicked too
     adElement.onclick = function () {
       document.body.removeChild(adElement);
     };
