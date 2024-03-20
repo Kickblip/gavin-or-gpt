@@ -1,8 +1,11 @@
 import snippets from "./assets/snippet-list.js";
+let correctCounter = 0
+let totalCounter = 0
+
 
 const resetButtons = () => {
-  const randomSnippet = snippets[Math.floor(Math.random() * snippets.length)];
   const divs = document.querySelectorAll(".content-div");
+  const paragraph = document.querySelector(".content")
 
   divs.forEach((div) => {
     div.removeEventListener("click", handleClick);
@@ -10,16 +13,16 @@ const resetButtons = () => {
     div.classList.remove("shake");
   });
 
-  let firstDivIsGavin = Math.random() > 0.5;
-  divs[0].dataset.isGavin = firstDivIsGavin;
-  divs[1].dataset.isGavin = !firstDivIsGavin;
+  let gptOrGavin = Math.random() > 0.5;
+  if (gptOrGavin == true){
+    paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gavin //sets the paragraph to gavin
+  }else{
+    paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gpt //sets the paragraph to gpt
+  }
+    
+  divs[0].dataset.isGavin = gptOrGavin;
+  divs[1].dataset.isGavin = !gptOrGavin;
 
-  divs[0].textContent = firstDivIsGavin
-    ? randomSnippet.gavin
-    : randomSnippet.gpt;
-  divs[1].textContent = firstDivIsGavin
-    ? randomSnippet.gpt
-    : randomSnippet.gavin;
 
   divs.forEach((div) => {
     div.addEventListener("click", handleClick);
@@ -29,10 +32,8 @@ const resetButtons = () => {
 const handleClick = (event) => {
   const div = event.currentTarget;
   const isGavin = div.dataset.isGavin === "true";
-  const isCorrect =
-    isGavin &&
-    div.textContent ===
-      snippets.find((snippet) => snippet.gavin === div.textContent).gavin;
+  const isCorrect = isGavin
+  totalCounter += 1
 
   document
     .querySelectorAll(".content-div")
@@ -41,7 +42,10 @@ const handleClick = (event) => {
   div.style.backgroundColor = isCorrect ? "#90ee90" : "#ffcccb";
   if (!isCorrect) {
     div.classList.add("shake");
+  }else {
+    correctCounter += 1
   }
+  document.querySelector(".totalCorrect").innerHTML = correctCounter + "/" + totalCounter
 
   setTimeout(() => {
     resetButtons();
