@@ -1,6 +1,9 @@
 import snippets from "./assets/snippet-list.js";
 let correctCounter = 0
 let totalCounter = 0
+let repeatArray = []
+let breakLoop = 0
+
 
 
 const resetButtons = () => {
@@ -13,16 +16,30 @@ const resetButtons = () => {
     div.classList.remove("shake");
   });
 
+
   let gptOrGavin = Math.random() > 0.5;
   if (gptOrGavin == true){
     paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gavin //sets the paragraph to gavin
   }else{
     paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gpt //sets the paragraph to gpt
   }
-    
+  breakLoop = 1
+  while(repeatArray.includes(snippets.find(i => i.gavin === paragraph.innerHTML || i.gpt === paragraph.innerHTML)) === true){
+    if (breakLoop === repeatArray.length){
+      repeatArray = []
+    }
+    let gptOrGavin = Math.random() > 0.5;
+    if (gptOrGavin == true){
+      paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gavin 
+    }else{
+      paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gpt 
+    }
+    breakLoop = breakLoop + 1
+  }
+  
+  repeatArray.push(snippets.find(i => i.gavin === paragraph.innerHTML || i.gpt === paragraph.innerHTML))
   divs[0].dataset.isGavin = gptOrGavin;
   divs[1].dataset.isGavin = !gptOrGavin;
-
 
   divs.forEach((div) => {
     div.addEventListener("click", handleClick);
