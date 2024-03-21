@@ -55,6 +55,36 @@ const snippets = [
     gpt: "Kill Bill is both an ode and a parody of the kung fu genre. Its ostentatiousness and its grim corners reflect a double-faced tribute to the ridicules in the genre. Quirky editing and writing on point make it a tarantino classic and the scene with the sweaty boss man is hilarious.",
     gavin: "Lucy Liu is so fine holy fuck. The movies aight.",
   },
+  {
+    // Salò, or the 120 Days of Sodom
+    gpt: "The cinematography is decent, but other than that it's just a boring ass movie. Just pure shock value with no substance. Not a good film.",
+    gavin:
+      "Evil is unabashed, confused, and in its purest form it is absurd. Salo perfectly presents the idea of a pure evil, not in the form of the individual, such as psychopathy, but in a systemic way.",
+  },
+  {
+    // Amélie
+    gpt: "The narration helps illuminate Amelie's inner thoughts, which juxtaposed nicely against her generally aloof mannerisms. The movie lingers long enough on all these little episodic 'nice' events to make the role feel coherent and meaningful.",
+    gavin:
+      "Holy shit I've found my ultimate feel good movie. This is most certainly not a movie that will work for everyone but worked so well on me, the build up is so perfect and the central romance may be my favorite of any movie ever.",
+  },
+  {
+    // The Boy and the Heron
+    gpt: "Can I Please enjoy nature without any woke crap in my face god damn.",
+    gavin:
+      "Miyazaki's most confusing film, yet also to me his most intriguing. Not sure exactly what everything was but I don't think thats the point, I feel like it's a mishmash of different motifs and themes from previous ghibli works.",
+  },
+  {
+    // Jesus Revolution
+    gpt: "Holy shit this thing is a cornucopia of brain poison, varied idiocy and out of touch commentary.",
+    gavin:
+      "This film is infuriating. It's a really well made movie that is so historically inaccurate that it actively pissed me off. Read about Lonnie elsewhere and skip this one, such a shame.",
+  },
+  {
+    // To Leslie
+    gpt: '"oh my gf is mentally id better ghost her despite having an almost perfect relationship with apparently no conflict!"',
+    gavin:
+      "Soulless torture porn turned into a mediocre hallmark movie at the halfway point. Both parts are equally mid but combined they make the film even worse.",
+  },
 ];
 
 export default snippets;
