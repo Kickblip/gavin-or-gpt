@@ -2,6 +2,7 @@ const fakeAds = [
   "./assets/cult_ad.gif",
   "./assets/lake_mungo_ad.gif",
   "./assets/sad_loser.gif",
+  "./assets/cisco.gif",
 ];
 
 function createAd() {
