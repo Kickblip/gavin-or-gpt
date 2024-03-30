@@ -1,14 +1,11 @@
 import snippets from "./assets/snippet-list.js";
-let correctCounter = 0
-let totalCounter = 0
-let repeatArray = []
-let breakLoop = 0
-
-
+let correctCounter = 0;
+let totalCounter = 0;
+let repeatArray = [];
 
 const resetButtons = () => {
   const divs = document.querySelectorAll(".content-div");
-  const paragraph = document.querySelector(".content")
+  const paragraph = document.querySelector(".content");
 
   divs.forEach((div) => {
     div.removeEventListener("click", handleClick);
@@ -16,30 +13,31 @@ const resetButtons = () => {
     div.classList.remove("shake");
   });
 
-
+  let snippetIndex = Math.floor(Math.random() * snippets.length);
   let gptOrGavin = Math.random() > 0.5;
-  if (gptOrGavin == true){
-    paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gavin //sets the paragraph to gavin
-  }else{
-    paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gpt //sets the paragraph to gpt
+
+  let attempt = 0;
+  while (
+    repeatArray.includes(snippets[snippetIndex]) &&
+    attempt < snippets.length
+  ) {
+    snippetIndex = Math.floor(Math.random() * snippets.length);
+    attempt++;
   }
-  breakLoop = 1
-  while(repeatArray.includes(snippets.find(i => i.gavin === paragraph.innerHTML || i.gpt === paragraph.innerHTML)) === true){
-    if (breakLoop === repeatArray.length){
-      repeatArray = []
-    }
-    let gptOrGavin = Math.random() > 0.5;
-    if (gptOrGavin == true){
-      paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gavin 
-    }else{
-      paragraph.innerHTML = snippets[Math.floor(Math.random() * snippets.length)].gpt 
-    }
-    breakLoop = breakLoop + 1
+
+  if (attempt >= snippets.length) {
+    repeatArray = [];
   }
-  
-  repeatArray.push(snippets.find(i => i.gavin === paragraph.innerHTML || i.gpt === paragraph.innerHTML))
-  divs[0].dataset.isGavin = gptOrGavin;
-  divs[1].dataset.isGavin = !gptOrGavin;
+
+  if (gptOrGavin) {
+    paragraph.innerHTML = snippets[snippetIndex].gavin;
+  } else {
+    paragraph.innerHTML = snippets[snippetIndex].gpt;
+  }
+  repeatArray.push(snippets[snippetIndex]);
+
+  divs[0].dataset.isGavin = gptOrGavin.toString();
+  divs[1].dataset.isGavin = (!gptOrGavin).toString();
 
   divs.forEach((div) => {
     div.addEventListener("click", handleClick);
@@ -49,8 +47,8 @@ const resetButtons = () => {
 const handleClick = (event) => {
   const div = event.currentTarget;
   const isGavin = div.dataset.isGavin === "true";
-  const isCorrect = isGavin
-  totalCounter += 1
+  const isCorrect = isGavin;
+  totalCounter += 1;
 
   document
     .querySelectorAll(".content-div")
@@ -59,10 +57,11 @@ const handleClick = (event) => {
   div.style.backgroundColor = isCorrect ? "#90ee90" : "#ffcccb";
   if (!isCorrect) {
     div.classList.add("shake");
-  }else {
-    correctCounter += 1
+  } else {
+    correctCounter += 1;
   }
-  document.querySelector(".totalCorrect").innerHTML = correctCounter + "/" + totalCounter
+  document.querySelector(".totalCorrect").innerHTML =
+    correctCounter + "/" + totalCounter;
 
   setTimeout(() => {
     resetButtons();
